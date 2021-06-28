@@ -3,7 +3,6 @@ import 'dart:convert';
 
 class NetworkHelper{
   NetworkHelper(this.url);
-
   final Uri url;
 
   Future getData() async{
@@ -12,8 +11,12 @@ class NetworkHelper{
     if (response.statusCode == 200) {
       String data = response.body;
       print(data);
-    }else{
+      return jsonDecode(data);
+    }else {
+      print('network is crushed');
       print(response.statusCode);
+      return Null;
     }
   }
+
 }
